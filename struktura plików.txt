@@ -1,0 +1,3 @@
+settings.farmfile:
+    - ustawienia gry
+    - dane o graczach (nazwy użytkowników)
