@@ -14,4 +14,10 @@ package pl.tomasztopolewski.farm.preparation;
 
 public class Player {
     private static String username;
+    private static String nameOfFilePlayer;
+
+    private String lineFromSettings;
+
+    private String lineValuesFromSettings;
+    private String[] valuesFromSettings;
 }

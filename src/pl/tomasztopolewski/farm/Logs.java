@@ -7,6 +7,10 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 import pl.tomasztopolewski.farm.preparation.Installation;
 
+import static pl.tomasztopolewski.farm.Main.NAME;
+import static pl.tomasztopolewski.farm.Main.TYPE_VERSION;
+import static pl.tomasztopolewski.farm.Main.VERSION;
+
 public class Logs {
     public static String pathToTheFolder;
     public static String nameFile;
@@ -56,6 +60,19 @@ public class Logs {
         logsput.close();
     }
 
+
+    public void appendWithVersion(String s) throws IOException {
+        //farm_v0.00.115.2-pre-dev
+        logsput = new BufferedWriter(new FileWriter(Installation.pathToFolder + Installation.nameOfFileLogs, true));
+        logsput.append("\n" + ++numerator + ") [" + dateFormating.format(new Date()) + "] [" + new String(NAME).toLowerCase() + "_v" + new String(VERSION + "-" + TYPE_VERSION).toLowerCase() + "] " + s);
+        logsput.close();
+    }
+
+    public void appendEmptyLine() throws IOException {
+        logsput = new BufferedWriter(new FileWriter(Installation.pathToFolder + Installation.nameOfFileLogs, true));
+        logsput.append("\n");
+        logsput.close();
+    }
 
     /**
      *  Stare metody

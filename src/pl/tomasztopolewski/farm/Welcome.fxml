@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="paneWelcome" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.tomasztopolewski.farm.ControllerWelcome">
+   <children>
+      <Label fx:id="labelTitle" alignment="CENTER" layoutY="200.0" prefHeight="220.0" prefWidth="1000.0" text="FARM">
+         <font>
+            <Font name="System Bold" size="150.0" />
+         </font></Label>
+      <Label fx:id="labelFooter" alignment="CENTER" layoutY="620.0" prefHeight="40.0" prefWidth="1000.0" text="Farm v.1.00.000 REALISE " textFill="#8a8a8a" />
+      <Label fx:id="labelLoadingText" alignment="CENTER" layoutY="439.0" prefHeight="35.0" prefWidth="1000.0" text="Ładowanie aplikacji...">
+          <font>
+              <Font name="System Italic" size="16.0" />
+          </font></Label>
+   </children>
+</Pane>
