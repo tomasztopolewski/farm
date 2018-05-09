@@ -25,7 +25,7 @@ public class Logs {
     public Logs() throws IOException {
         String line, lastLine = "";
 
-        BufferedReader reader = new BufferedReader(new FileReader(Installation.pathToFolder + Installation.pathToFileLogs));
+        BufferedReader reader = new BufferedReader(new FileReader(Installation.pathToFolder + Installation.nameOfFileLogs));
         while ((line = reader.readLine()) != null) lastLine = line;
 
         if (lastLine != "" && lastLine != null) {
@@ -39,7 +39,7 @@ public class Logs {
     }
     public Logs(String log) throws IOException {
         String line, lastLine = "";
-        BufferedReader reader = new BufferedReader(new FileReader(Installation.pathToFolder + Installation.pathToFileLogs));
+        BufferedReader reader = new BufferedReader(new FileReader(Installation.pathToFolder + Installation.nameOfFileLogs));
         while ((line = reader.readLine()) != null) lastLine = line;
 
         if (lastLine != "" && lastLine != null) {
@@ -50,7 +50,7 @@ public class Logs {
             this.numerator = 0;
         }
 
-        logsput = new BufferedWriter(new FileWriter(Installation.pathToFolder + Installation.pathToFileLogs, true));
+        logsput = new BufferedWriter(new FileWriter(Installation.pathToFolder + Installation.nameOfFileLogs, true));
         if (numerator == 0) logsput.append(++numerator + ") [" + dateFormating.format(new Date()) + "] " + log);
         else logsput.append("\n" + ++numerator + ") [" + dateFormating.format(new Date()) + "] " + log);
         logsput.close();

@@ -1,32 +1,48 @@
+/**
+ * Klasa 'Installation' odpowiada za poprawną instalację gry.
+ *
+ * Wersje klasy:
+ *    v1.0:
+ *    - proste ustawienia gry przechowujące dane o jednym graczu
+ *    - zapisywanie kominukatów (logów) systemowych do pliku
+ *
+ *    v2.0:
+ *    - wczytywanie wielu graczy
+ *
+ */
 package pl.tomasztopolewski.farm.preparation;
 
+import javafx.scene.shape.Path;
 import pl.tomasztopolewski.farm.Logs;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Installation {
-    public final static String pathToFolder = "C:\\Program Files\\Farm\\";
-    public final static String pathToFileLogs = "bin\\logs.logs";
-    public final static String pathToFileSettings = "bin\\settings.farmfile";
+    public final static String pathToFolder = "C:\\Program Files\\Farm\\bin\\";
+    public final static String nameOFFileSettings = "settings.farmfile";
+    //public final static String nameOFFilePlayers = "players.farmfile";
+    public final static String nameOfFileLogs = "logs.logs";
 
     public Installation() {};
 
     public boolean installation() throws IOException {
-        if (checkingFileSetting()) {
-            new Logs(Logs.SYSTEM_INFO + "Sprawdzono strukturę plików. Stan: poprawna.");
+        //if (Paths.get(pathToFolder).
+        if (checkingFileSetting() && checkingFileLogs()) {
             return true;
         } else {
-            createFiles();
-            return installation();
+            createDirectories();
+            createFileLogs();
+            createFileSetting();
         }
+        new Logs(Logs.SYSTEM_WARN + "Ponowne sprawdzenie struktury plików.");
+        return installation();
     }
 
     private boolean checkingFileSetting() {
-        return  new File(pathToFolder + pathToFileSettings).canRead()
-                && new File(pathToFolder + pathToFileSettings).canWrite();
+        return  new File(pathToFolder + nameOFFileSettings).canRead()
+                && new File(pathToFolder + nameOFFileSettings).canWrite();
 
         /* return new File(pathToFolder + "bin\\settings.farmfile").canRead()
                 && new File(pathToFolder + "bin\\settings.farmfile").canWrite()
@@ -39,17 +55,30 @@ public class Installation {
     }
 
     private boolean checkingFileLogs() {
-        return  new File(pathToFolder + pathToFileLogs).canRead()
-                && new File(pathToFolder + pathToFileLogs).canWrite();
+        return  new File(pathToFolder + nameOfFileLogs).canRead()
+                && new File(pathToFolder + nameOfFileLogs).canWrite();
     }
 
 
-    private void createFiles() throws IOException {
+    private void createDirectories() throws IOException {
+        //Files.createDirectory(Paths.get("C:\\Program Files\\Farm"));
+        //Files.createDirectory(Paths.get("C:\\Program Files\\Farm\\bin"));
+        new File("C:\\Program Files\\Farm\\bin").mkdirs();
+    }
+
+    private void createFileSetting() throws IOException {
         // tworzenie plików
-        Files.createDirectory(Paths.get(pathToFolder + "bin"));
-        new File(pathToFolder + pathToFileSettings).createNewFile();
-        new File(pathToFolder + pathToFileLogs).createNewFile();
-        new Logs(Logs.SYSTEM_ERROR + "Brak poprawnej struktury plików.");
-        new Logs(Logs.SYSTEM_INFO + "Wygenerowano nową strukturę plików.");
+        //Files.createDirectory(Paths.get(pathToFolder));
+        new File(pathToFolder + nameOFFileSettings).createNewFile();
+        new Logs(Logs.SYSTEM_ERROR + "Nie znaleziono pliku ustawień w strukturze plików.");
+        new Logs(Logs.SYSTEM_INFO + "Wygenerowano plik ustawień.");
+    }
+
+    private void createFileLogs() throws IOException {
+        // tworzenie plików
+        //Files.createDirectory(Paths.get(pathToFolder));
+        new File(pathToFolder + nameOfFileLogs).createNewFile();
+        new Logs(Logs.SYSTEM_ERROR + "Nie znaleziono pliku logów w strukturze plików.");
+        new Logs(Logs.SYSTEM_INFO + "Wygenerowano plik logów.");
     }
 }
