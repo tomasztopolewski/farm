@@ -22,41 +22,35 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Main extends Application implements Initializable {
+public class Main extends Application {
     public static final String NAME = "Farm";
     public static final String AUTHOR = "Tomasz Topolewski";
-    public static final String VERSION = "0.00.115.1";
+    public static final String VERSION = "0.00.115.2";
     public static final String TYPE_VERSION = "pre-DEV";
 
     public final static double  WIDTH_MAIN = 1000.0, HEIGHT_MAIN = 700.0;
 
     protected Scene sceneWelcome;
-    @FXML
-    protected Pane paneWelcome;
-    @FXML
-    protected Label labelTitle;
-    @FXML
-    protected Label labelFooter;
-
 
     public static void main(String[] args) { launch(args); }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        createLayoutWelcome();
-
-        //Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
-        primaryStage.setTitle(NAME + " v" + VERSION + " " + TYPE_VERSION);
-        sceneWelcome = new Scene(paneWelcome, WIDTH_MAIN, HEIGHT_MAIN);
         //createLayoutWelcome();
-        primaryStage.setScene(sceneWelcome);
+
+        Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+        primaryStage.setTitle(NAME + " v" + VERSION + " " + TYPE_VERSION);
+        sceneWelcome = new Scene(root, WIDTH_MAIN, HEIGHT_MAIN);
+        //createLayoutWelcome();
+
+        //ControllerMain.setLabelTitle();
 
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();
     }
 
-    @Override
+   /*@Override
     public void initialize(URL location, ResourceBundle resources) {
         labelTitle.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -64,11 +58,11 @@ public class Main extends Application implements Initializable {
                 System.out.println("Kliknęto guzik.");
             }
         });
-    }
+    }*/
 
 
 
-    private void createLayoutWelcome() {
+    /*private void createLayoutWelcome() {
         paneWelcome = new Pane();
         paneWelcome.setPrefSize(WIDTH_MAIN, HEIGHT_MAIN);
 
@@ -87,7 +81,7 @@ public class Main extends Application implements Initializable {
         //sceneWelcome.setRoot(paneWelcome);
         paneWelcome.getChildren().addAll(labelTitle, labelFooter);
         //sceneWelcome.setRoot(paneWelcome);
-    }
+    }*/
 
 
 }

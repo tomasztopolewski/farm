@@ -5,12 +5,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane fx:id="paneWelcome" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.tomasztopolewski.farm.Main">
+<Pane fx:id="paneWelcome" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.tomasztopolewski.farm.ControllerMain">
    <children>
-      <Label fx:id="labelTitle" alignment="CENTER" layoutY="150.0" prefHeight="100.0" prefWidth="600.0" text="Farm">
-         <font>
-            <Font size="54.0" />
-         </font></Label>
-      <Label fx:id="labelFooter" alignment="CENTER" layoutY="274.0" prefHeight="30.0" prefWidth="600.0" text=""/>
+      <Label fx:id="labelTitle"/>
+      <Label fx:id="labelFooter"/>
    </children>
 </Pane>
