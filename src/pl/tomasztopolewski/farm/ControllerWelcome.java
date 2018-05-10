@@ -1,10 +1,12 @@
 package pl.tomasztopolewski.farm;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import java.net.URL;
@@ -15,7 +17,10 @@ import static pl.tomasztopolewski.farm.Main.*;
 public class ControllerWelcome implements Initializable {
 
     @FXML
-    Label labelTitle;
+    Pane paneWelcome;
+
+    @FXML
+    public Label labelTitle;
 
     @FXML
     Label labelLoadingText;
@@ -27,19 +32,19 @@ public class ControllerWelcome implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         labelTitle.setText(new String(NAME).toUpperCase());
         labelFooter.setText(NAME + " v" + VERSION + " " + TYPE_VERSION + " by " + AUTHOR);
+        labelLoadingText.setText("Ładowanie aplikacji...");
     }
 
-    public void setPaneWelcome() {
-        //.setPrefSize(WIDTH_MAIN, HEIGHT_MAIN);
+    public void loadingText1() throws InterruptedException {
+        labelLoadingText.setText("Ładowanie aplikacji...");
     }
-
-    public void setLabelTitle() {
-        labelTitle.setText(new String(NAME).toUpperCase());
-        labelTitle.setPrefSize(1000.0, 140.0);
-        labelTitle.setLayoutX(0); labelTitle.setLayoutY(190.0);
-        labelTitle.setFont(new Font(150));
-        labelTitle.setAlignment(Pos.CENTER);
+    public void loadingText2() throws InterruptedException {
+        labelLoadingText.setText("Wczytywanie ustawień...");
     }
-
-
+    public void loadingText3() throws InterruptedException {
+        labelLoadingText.setText("Ładuję ustawienia i pliki gracza...");
+    }
+    public void loadingText4() throws InterruptedException {
+        labelLoadingText.setText("Uruchamianie gry...");
+    }
 }

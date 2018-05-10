@@ -1,9 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.web.WebView?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.tomasztopolewski.farm.app.ControllerMain">
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane fx:id="paneMain" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.tomasztopolewski.farm.app.ControllerMain">
    <children>
-      <WebView fx:id="web" layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+      <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="1000.0">
+        <menus>
+          <Menu fx:id="menuGame" mnemonicParsing="false" text="Gra">
+            <items>
+                  <MenuItem fx:id="menuItemRefresh" mnemonicParsing="false" text="Odśwież" />
+              <MenuItem fx:id="menuItemSave" mnemonicParsing="false" text="Zapisz postęp" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="menuItemExit" mnemonicParsing="false" text="Wyłącz grę" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuHelp" mnemonicParsing="false" text="Pomoc">
+            <items>
+              <MenuItem fx:id="menuItemInfoGame" mnemonicParsing="false" text="O grze" />
+                  <MenuItem fx:id="menuItemInfoAuthor" disable="true" mnemonicParsing="false" text="O autorze" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label fx:id="labelFooter" alignment="CENTER_RIGHT" layoutX="16.0" layoutY="666.0" prefHeight="17.0" prefWidth="965.0" text="Farm version type-version by author " textAlignment="RIGHT" textFill="#a4a4a4" />
+      <Label fx:id="labelTitleUsername" layoutX="18.0" layoutY="31.0" prefHeight="25.0" prefWidth="47.0" text="Gracz:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelUsername" layoutX="71.0" layoutY="31.0" prefHeight="25.0" prefWidth="109.0" text="username">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTitleLevel" layoutX="184.0" layoutY="31.0" prefHeight="25.0" prefWidth="60.0" text="Poziom:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelLevel" layoutX="251.0" layoutY="31.0" prefHeight="25.0" prefWidth="535.0" text="liczba     10 000 pkt. doświadczenia (pozostało 1000 pkt.)">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
-</AnchorPane>
+</Pane>
